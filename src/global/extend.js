@@ -962,6 +962,56 @@ function luckysheetextendData(rowlen, newData) {
     jfrefreshgrid_rhcw(Store.flowdata.length, Store.flowdata[0].length);
 }
 
+function luckysheetextendDataColumn(collen, newData, colIndex) {
+    let d = editor.deepCopyFlowData(Store.flowdata);
+
+    let cfg = $.extend(true, {}, Store.config);
+    if (cfg["merge"] == null) {
+        cfg["merge"] = {};
+    }
+
+    let rowlen = d.length;
+
+    // Adding null values to all rows up to the new column
+    for (let r = 0; r < rowlen; r++) {
+        for (let c = d[r].length; c <= colIndex; c++) {
+            d[r][c] = null;
+        }
+    }
+
+    // Adding new data
+    for (let i = 0; i < newData.length; i++) {
+        let r = newData[i].r,
+            c = newData[i].c,
+            v = newData[i].v;
+
+        // Validating row index
+        if (r >= rowlen) {
+            console.error(`Invalid row index ${r}. The data has only ${rowlen} rows.`);
+            continue;
+        }
+
+        // Updating cell value
+        setcellvalue(r, colIndex, d, v);
+
+        if (v != null && v.mc != null && v.mc.rs != null) {
+            cfg["merge"][v.mc.r + "_" + v.mc.c] = $.extend(true, {}, v.mc);
+        }
+    }
+
+    // Updating the store
+    Store.flowdata = d;
+    editor.webWorkerFlowDataCache(Store.flowdata); //worker存数据
+    Store.luckysheetfile[getSheetIndex(Store.currentSheetIndex)].data = d;
+
+    //config
+    Store.config = cfg;
+    Store.luckysheetfile[getSheetIndex(Store.currentSheetIndex)].config = Store.config;
+
+    // Refreshing the grid
+    jfrefreshgrid_rhcw(Store.flowdata.length, Store.flowdata[0].length);
+}
+
 //删除行列
 function luckysheetdeletetable(type, st, ed, sheetIndex) {
     sheetIndex = sheetIndex || Store.currentSheetIndex;
