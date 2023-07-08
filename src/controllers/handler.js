@@ -1291,6 +1291,7 @@ export default function luckysheetHandler() {
                     $("#luckysheet-rightclick-menu .luckysheet-cols-rows-shift-right").text(locale().rightclick.right);
 
                     $("#luckysheet-cols-rows-add").show();
+                    $("#luckysheet-embed-selected").show();
                     // $("#luckysheet-cols-rows-data").show();
                     $("#luckysheet-cols-rows-shift").hide();
                     $("#luckysheet-cols-rows-handleincell").hide();
@@ -1406,6 +1407,7 @@ export default function luckysheetHandler() {
                     $("#luckysheet-rightclick-menu .luckysheet-cols-rows-shift-left").text(locale().rightclick.top);
                     $("#luckysheet-rightclick-menu .luckysheet-cols-rows-shift-right").text(locale().rightclick.bottom);
                     $("#luckysheet-cols-rows-add").show();
+                    $("#luckysheet-embed-selected").show();
                     // $("#luckysheet-cols-rows-data").show();
                     $("#luckysheet-cols-rows-shift").hide();
                     $("#luckysheet-cols-rows-handleincell").hide();

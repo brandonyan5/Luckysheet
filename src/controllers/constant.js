@@ -499,6 +499,14 @@ function rightclickHTML() {
                             }</span>
                         </div>
                     </div>
+                    <div id="luckysheet-embed-selected" class="luckysheet-cols-menuitem luckysheet-mousedown-cancel">
+                        <div class="luckysheet-cols-menuitem-content luckysheet-mousedown-cancel">
+                            Embed
+                            <span class="luckysheet-cols-rows-shift-word luckysheet-mousedown-cancel">${
+                                rightclick.column
+                            }</span>
+                        </div>
+                    </div>
                     <div id="luckysheet-hide-selected" class="luckysheet-cols-menuitem luckysheet-mousedown-cancel">
                         <div class="luckysheet-cols-menuitem-content luckysheet-mousedown-cancel">
                         ${rightclick.hideSelected}
