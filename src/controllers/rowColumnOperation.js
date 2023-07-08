@@ -11,7 +11,12 @@ import { rowLocation, rowLocationByIndex, colLocation, colLocationByIndex, mouse
 import { isRealNull, isRealNum, hasPartMC, isEditMode, checkIsAllowEdit } from "../global/validate";
 import { countfunc } from "../global/count";
 import formula from "../global/formula";
-import { luckysheetextendtable, luckysheetdeletetable, luckysheetDeleteCell } from "../global/extend";
+import {
+    luckysheetextendtable,
+    luckysheetdeletetable,
+    luckysheetDeleteCell,
+    luckysheetextendDataColumn
+} from "../global/extend";
 import { jfrefreshgrid, jfrefreshgridall, jfrefreshgrid_rhcw } from "../global/refresh";
 import { getcellvalue } from "../global/getdata";
 import tooltip from "../global/tooltip";
@@ -1620,7 +1625,16 @@ export function rowColumnOperationInitial() {
             return;
         }
 
+        let newData = [
+            { r: 0, c: 2, v: { v: 'A' } },
+            { r: 1, c: 2, v: { v: 'B' } },
+            { r: 2, c: 2, v: { v: 'C' } },
+            { r: 3, c: 2, v: { v: 'D' } },
+        ];
+
+        let colIndex = 2; // Adding to column index 2
         luckysheetextendtable(Store.luckysheetRightHeadClickIs, st_index, value, "rightbottom");
+        luckysheetextendDataColumn(newData.length, newData, st_index + 1);
     });
 
     // $("#luckysheet-addBottomRows").click(function (event) {

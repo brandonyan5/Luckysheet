@@ -2571,4 +2571,4 @@ function getMoveRange(type, str, edr, stc, edc, r1, r2, c1, c2, rlen, clen) {
     return newRange;
 }
 
-export { luckysheetextendtable, luckysheetextendData, luckysheetdeletetable, luckysheetDeleteCell };
+export { luckysheetextendtable, luckysheetextendData, luckysheetdeletetable, luckysheetDeleteCell, luckysheetextendDataColumn };
